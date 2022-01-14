@@ -4,9 +4,6 @@ use std::{cmp::Ordering, io};
 fn main() {
     println!("Guess the number!");
 
-    let test = "test";
-    let str_test = String::from("test");
-
     let secret_number = rand::thread_rng().gen_range(1..101);
 
     loop {
