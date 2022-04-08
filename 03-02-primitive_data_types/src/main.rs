@@ -1,4 +1,5 @@
 // https://doc.rust-lang.org/stable/book/ch03-02-data-types.html
+use std::io;
 fn main() {
     floating_point_types();
     numeric_operations();
@@ -89,4 +90,33 @@ fn array() {
         "November",
         "December",
     ];
+
+    // the array named `a` will contain 5 elements that will all be set to the
+    // value 3 initially
+    let a = [3; 5];
+}
+
+fn invalid_array_element_access() {
+    // accessing array index 10 will lead to a runtime error.
+    let a = [1, 2, 3, 4, 5];
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!(
+        "The value of the element at index {} is: {}",
+        index, element
+    );
 }
