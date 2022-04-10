@@ -8,6 +8,9 @@ fn main() {
     first_word();
     string_slices();
     proper_first_word();
+    string_literals_are_slices();
+    string_slices_as_parameters();
+    other_slices();
 }
 
 // We’re returning a usize on its own, but it’s only a meaningful number in the
@@ -68,7 +71,7 @@ fn string_slices() {
 // the slice and the number of elements in the slice.
 fn proper_first_word(s: &String) -> &str {
     let bytes = s.as_bytes();
-    let zzz = "Dsdq";
+
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
             return &s[..i];
@@ -76,4 +79,31 @@ fn proper_first_word(s: &String) -> &str {
     }
 
     &s[..]
+}
+
+fn string_literals_are_slices() {
+    // The type of s here is &str: it’s a slice pointing to that specific point
+    // of the binary. This is also why string literals are immutable; &str is an
+    // immutable reference.
+
+    let s = "Hello, world!";
+}
+
+fn string_slices_as_parameters() {
+    other_slices();
+    // fn first_word(s: &String) -> &str {
+
+    // A more experienced Rustacean would write the signature shown in Listing
+    // 4-9 instead because it allows us to use the same function on both &String
+    // values and &str values.
+
+    // fn first_word(s: &str) -> &str {
+}
+
+fn other_slices() {
+    let a = [1, 2, 3, 4, 5];
+
+    let slice = &a[1..3];
+
+    assert_eq!(slice, &[2, 3]);
 }
