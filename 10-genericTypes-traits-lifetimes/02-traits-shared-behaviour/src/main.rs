@@ -198,14 +198,14 @@ fn returns_summarizable() -> impl Summary {
 // returns_summarizable function returns some type that implements the Summary
 // trait without naming the concrete type. In this case, returns_summarizable
 // returns a Tweet, but the code calling this function doesn’t know that.
-// # However, you can only use impl Trait if you’re returning a single type.
+// $ However, you can only use impl Trait if you’re returning a single type.
 // using a if else flow in function that returns `impl Summary` wouldn't work
 
 fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
     // when we made the largest function generic, it became possible for the
     // list parameter to have types in it that don’t implement the Copy trait.
 
-    // # If we don’t want to restrict the largest function to the types that
+    // $ If we don’t want to restrict the largest function to the types that
     // implement the Copy trait, we could specify that T has the trait bound
     // Clone instead of Copy. Then we could clone each value in the slice when
     // we want the largest function to have ownership. Using the clone function
