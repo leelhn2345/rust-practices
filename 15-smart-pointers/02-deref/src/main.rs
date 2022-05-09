@@ -7,7 +7,7 @@ fn main() {
     assert_eq!(5, x);
     assert_eq!(5, *y.deref());
 
-    // ecause we implemented the Deref trait on MyBox<T> in Listing 15-10, Rust
+    // because we implemented the Deref trait on MyBox<T> in Listing 15-10, Rust
     // can turn &MyBox<String> into &String by calling deref.
     // Rust calls deref again to turn the &String into &str, which matches the
     // hello function’s definition.
